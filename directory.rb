@@ -8,7 +8,7 @@ def print_1(students)
 			if student[:name].start_with?("a")
 				print "#{index} #{student[:name]} (#{student[:cohort]} cohort)\n"
 				else
-				print ""
+				print nil
 			end
 	end
 end
