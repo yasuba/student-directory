@@ -5,11 +5,12 @@ end
 
 def print_1(students)
 	students.each_with_index do |student, index|
-			if student[:name].start_with?("a")
+			if student[:name].start_with?("a") and student[:name].length < 13
 				print "#{index} #{student[:name]} (#{student[:cohort]} cohort)\n"
 				else
 				print nil
 			end
+			
 	end
 end
 
