@@ -18,8 +18,9 @@ end
 
 def print_students(students)
 	students.each_with_index do |student, index|
-	puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)" if student[:name].start_with?("a")		
-	end
+	length = student[:name].length
+	puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)" if length < 4	
+end
 end
 
 def print_footer(names)
