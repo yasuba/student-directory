@@ -3,7 +3,7 @@ def input_students
 	puts "To finish, just hit return twice"
 	students = []
 	name = gets.chomp
-	while !name.empty? do
+	until name.empty? do
 		students << {:name => name, :cohort => :august}
 		puts "Now we have #{students.length} students."
 		name = gets.chomp
@@ -17,10 +17,11 @@ def print_header
 end
 
 def print_students(students)
-	students.each_with_index do |student, index|
-	length = student[:name].length
-	puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)" if length < 4	
-end
+	count = students.count - 1
+	until count < 0 
+		puts "#{students[count - 1][:name]} (#{students[count - 1][:cohort]} cohort)"
+		count = count - 1
+	end
 end
 
 def print_footer(names)
