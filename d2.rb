@@ -1,12 +1,15 @@
-students = [
-{:name => "student1", :cohort => :august},
-{:name => "student2", :cohort => :august},
-{:name => "student3", :cohort => :august},
-{:name => "student4", :cohort => :august},
-{:name => "student5", :cohort => :august},
-{:name => "student6", :cohort => :august},
-{:name => "student7", :cohort => :august},
-]
+def input_students
+	puts "Please enter the names of the students"
+	puts "To finish, just hit return twice"
+	students = []
+	name = gets.chomp
+	while !name.empty? do
+		students << {:name => name, :cohort => :august}
+		puts "Now we have #{students.length} students."
+		name = gets.chomp
+	end
+	students
+end
 
 def print_header
 	puts "The students of my cohort at Makers are:"
@@ -23,6 +26,7 @@ def print_footer(names)
 	"Overall, we have #{names.length} great students" 
 end
 
+students = input_students
 print_header
 print(students)
 print_footer(students)
