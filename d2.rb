@@ -1,6 +1,6 @@
 def input_students
-	print "Please enter the names of the students\n"
-	print "To finish, just hit return twice\n"
+	puts "Please enter the names of the students"
+	puts "To finish, just hit return twice"
 	students = []
 	name = gets.chomp
 	while !name.empty? do
@@ -17,8 +17,8 @@ def print_header
 end
 
 def print_students(students)
-	students.each do |student|
-		puts "#{student[:name]} (#{student[:cohort]} cohort)"
+	students.each_with_index do |student, index|
+		puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)"
 	end
 end
 
