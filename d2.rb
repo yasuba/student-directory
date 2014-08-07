@@ -8,12 +8,21 @@ students = [
 "student7",
 ]
 
-puts "The students of my cohort at Makers are:"
-puts "--------------"
-
-students.each do |student|
-	puts student
+def print_header
+	puts "The students of my cohort at Makers are:"
+	puts "--------------"
 end
 
-"Overall, we have #{students.length} great students" 
+def print(names)
+names.each do |student|
+	puts student
+end
+end
 
+def print_footer(names)
+"Overall, we have #{names.length} great students" 
+end
+
+print_header
+print(students)
+print_footer(students)
