@@ -23,17 +23,24 @@ def correct_month(students)
   	end
 end
 
+def students_by_month(students)
+	cohorts = students.map {|student| student[:cohort]}.uniq
+	cohorts.each do |cohort|
+		puts "#{cohort} cohort:".capitalize.center(52)
+		puts "--------------".center(50)
+		print_students students.select {|student| student[:cohort] == cohort}
+	end
+end
+
 def print_header
-	puts "The students of my cohort at Makers are:"
+	puts "The students of Makers are:"
 	puts "--------------".center(50)
 end
 
 def print_students(students)
-	count = students.count - 1
-	until count < 0 
-		print "#{students[count - 1][:name]}".capitalize.center(25)
-		puts "(#{students[count - 1][:cohort].capitalize.to_sym})".center(25)
-		count = count - 1
+	students.each do |students|
+		print "#{students[:name]}".capitalize.center(25)
+		puts "(#{students[:cohort].capitalize})".center(25)
 	end
 end
 
@@ -43,5 +50,5 @@ end
 
 students = input_students
 print_header
-print_students(students)
+students_by_month(students)
 print_footer(students)
