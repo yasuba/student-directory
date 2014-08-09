@@ -6,18 +6,19 @@ def input_students
 	name, cohort = answer.chomp.split(" ")
 	until answer.empty? do
 		students << {:name => name, :cohort => cohort}
+		correct_month(students)
 		puts "Now we have #{students.length} students."
 		answer = gets.chomp.downcase
 		name, cohort = answer.chomp.split(" ")
 	end
 	students
-	missing_answer(students)
 end
 
-def missing_answer(students)
-	students.each do|student|
-		if student[:cohort] == nil
-  	 	 student[:cohort] = "missing"
+def correct_month(students)
+	students.each do |student|
+		cohort = student[:cohort]
+		unless ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"].include?(cohort)    
+  	 		student[:cohort] = "Unknown"
   		end
   	end
 end
@@ -30,8 +31,8 @@ end
 def print_students(students)
 	count = students.count - 1
 	until count < 0 
-		print "#{students[count - 1][:name]}".center(25)
-		puts "(#{students[count - 1][:cohort].to_sym})".center(25)
+		print "#{students[count - 1][:name]}".capitalize.center(25)
+		puts "(#{students[count - 1][:cohort].capitalize.to_sym})".center(25)
 		count = count - 1
 	end
 end
