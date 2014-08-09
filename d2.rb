@@ -1,12 +1,20 @@
 def input_students
-	puts "Please enter the names of the students"
+	puts "Please enter the names of the students and their cohort"
 	puts "To finish, just hit return twice"
 	students = []
-	name = gets.chomp
-	until name.empty? do
-		students << {:name => name, :cohort => :august}
+	answer = gets.chomp
+	name, cohort = answer.chomp.split(" ")
+  	if cohort == nil
+  	 cohort = "missing"
+  	end
+	until answer.empty? do
+		students << {:name => name, :cohort => cohort}
 		puts "Now we have #{students.length} students."
-		name = gets.chomp
+		answer = gets.chomp
+		name, cohort = answer.chomp.split(" ")
+  		if cohort == nil
+  		 cohort = "missing"
+  		end
 	end
 	students
 end
@@ -25,8 +33,8 @@ def print_students(students)
 	end
 end
 
-def print_footer(names)
-	"Overall, we have #{names.length} great students" 
+def print_footer(students)
+	"Overall, we have #{students.length} great students" 
 end
 
 students = input_students
