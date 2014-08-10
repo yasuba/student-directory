@@ -2,14 +2,14 @@ def input_students
 	puts "Please enter the names of the students and their cohort"
 	puts "To finish, just hit return twice"
 	students = []
-	answer = gets.downcase.gsub(/\n/," ")
+	answer = gets.chomp.downcase
 	name, cohort = answer.split(" ")
 	until answer.empty? do
 		students << {:name => name, :cohort => cohort}
 		correct_month(students)
 		print "Now we have #{students.length} student"
 		pluralise(students)
-		answer = gets.downcase.gsub(/\n/," ")
+		answer = gets.chomp.downcase
 		name, cohort = answer.split(" ")
 	end
 	students
@@ -37,9 +37,13 @@ def students_by_month(students)
 	end
 end
 
-def print_header
-	puts "The students of Makers are:"
-	puts "--------------".center(50)
+def print_header(students)
+	if students.length == 0
+		puts "You didn't enter any students."
+	else
+		puts "The students of Makers are:"
+		puts "--------------".center(50)
+	end
 end
 
 def print_students(students)
@@ -54,6 +58,6 @@ def print_footer(students)
 end
 
 students = input_students
-print_header
+print_header(students)
 students_by_month(students)
 print_footer(students)
