@@ -7,15 +7,22 @@ def input_students
 	until answer.empty? do
 		students << {:name => name, :cohort => cohort}
 		correct_month(students)
-		if students.length == 1
-			puts "Now we have #{students.length} student."
-		else 
-			puts "Now we have #{students.length} students."
-		end
+		print "Now we have #{students.length} student"
+		pluralise(students)
 		answer = gets.chomp.downcase
 		name, cohort = answer.chomp.split(" ")
 	end
 	students
+end
+
+def pluralise(students)
+	puts "s" if students.length != 1
+	# print "Now we have #{students.length}"
+	# if students.length == 1
+	# 	 puts " student."
+	# else 
+	# 	puts " students."
+	# end
 end
 
 def correct_month(students)
