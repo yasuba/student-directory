@@ -2,27 +2,21 @@ def input_students
 	puts "Please enter the names of the students and their cohort"
 	puts "To finish, just hit return twice"
 	students = []
-	answer = gets.chomp.downcase
-	name, cohort = answer.chomp.split(" ")
+	answer = gets.downcase.gsub(/\n/," ")
+	name, cohort = answer.split(" ")
 	until answer.empty? do
 		students << {:name => name, :cohort => cohort}
 		correct_month(students)
 		print "Now we have #{students.length} student"
 		pluralise(students)
-		answer = gets.chomp.downcase
-		name, cohort = answer.chomp.split(" ")
+		answer = gets.downcase.gsub(/\n/," ")
+		name, cohort = answer.split(" ")
 	end
 	students
 end
 
 def pluralise(students)
 	puts "s" if students.length != 1
-	# print "Now we have #{students.length}"
-	# if students.length == 1
-	# 	 puts " student."
-	# else 
-	# 	puts " students."
-	# end
 end
 
 def correct_month(students)
