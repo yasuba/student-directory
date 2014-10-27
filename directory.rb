@@ -25,7 +25,7 @@ def process(selection)
 		load_students
 	when "9"
 		exit
-	else 
+	else
 		puts "I don't know what you mean, try again"
 	end
 end
@@ -58,8 +58,8 @@ end
 
 def correct_month(students)
 	@students.each do |student|
-		cohort = student[:cohort]
-		unless ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"].include?(cohort)    
+		cohort = student[:cohort].to_s
+		unless ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"].include?(cohort)
   	 		student[:cohort] = "Unknown"
   		end
   	end
@@ -84,14 +84,14 @@ def print_header(students)
 end
 
 def print_students(students)
-	students.each do |students|
-		print "#{students[:name]}".capitalize.center(25)
-		puts "(#{students[:cohort].capitalize})".center(25)
+	students.sort{|a,b| a[:name]<=>b[:name]}.each do |student|
+		print "#{student[:name]}".capitalize.center(25)
+		puts "(#{student[:cohort].capitalize})".center(25)
 	end
 end
 
 def print_footer(students)
-	"Overall, we have #{@students.length} great students" 
+	"Overall, we have #{@students.length} great students"
 end
 
 def save_students
@@ -117,4 +117,4 @@ def load_students
 	file.close
 end
 
-interactive_menu
+# interactive_menu
